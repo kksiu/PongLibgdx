@@ -5,15 +5,10 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 
-/**
- * Created by Kenneth on 8/4/2014.
- */
 public class Paddle extends Actor {
     private Pixmap pixmap;
     private Texture texture;
@@ -27,8 +22,10 @@ public class Paddle extends Actor {
 
         texture = new Texture(pixmap);
 
+        //set the bounds of the object
         setBounds(getX(), getY(), texture.getWidth(), texture.getHeight());
 
+        //add listener so that paddle will move on touch but will not leave the screen
         this.addListener(new ActorGestureListener() {
             public void pan (InputEvent event, float x, float y, float deltaX, float deltaY) {
                 if(getY() + deltaY < 0) {
