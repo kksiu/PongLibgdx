@@ -33,16 +33,17 @@ public class Pong extends ApplicationAdapter {
         Gdx.input.setInputProcessor(stage);
 	}
 
-    public void update() {
+    public void update(float deltaTime) {
 
     }
 
 	@Override
 	public void render () {
-        update();
+        float deltaTime = Gdx.graphics.getDeltaTime();
+        update(deltaTime);
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        stage.act(Gdx.graphics.getDeltaTime());
+        stage.act(deltaTime);
         stage.draw();
 	}
 }
